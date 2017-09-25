@@ -51,6 +51,15 @@ class State(object):
     def __repr__(self):
         return '<%s: %r>' % (self.__class__.__name__, self.name)
 
+    def __eq__(self, other):
+        """Equality is based on name."""
+        if not isinstance(other, State):
+            return NotImplemented
+        return self.name == other.name
+
+    def __ne__(self, other):
+        return not (self == other)
+
 
 class StateList(object):
     """A list of states."""
